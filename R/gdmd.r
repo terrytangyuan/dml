@@ -38,7 +38,7 @@
 #'
 
 #' @examples
-#' \donotrun{
+#' \dontrun{
 #' set.seed(602)
 #' library(MASS)
 #' library(scatterplot3d)

@@ -36,7 +36,7 @@
 #  in \emph{Proc. NIPS}.
 #'
 #' @examples
-#' \donotrun{
+#' \dontrun{
 #' set.seed(123)
 #' library(MASS)
 #' library(scatterplot3d)

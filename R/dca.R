@@ -53,7 +53,7 @@
 #' (CVPR2006)}.
 #'
 #' @examples
-#' \donotrun{
+#' \dontrun{
 #' set.seed(123)
 #' require(MASS)  # generate synthetic Gaussian data
 #' k = 100        # sample size of each class

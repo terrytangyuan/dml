@@ -62,7 +62,7 @@
 #' Machine Learning (ICML2003)}.
 #'
 #' @examples
-#' \donotrun{
+#' \dontrun{
 #' set.seed(1234)
 #' require(MASS)  # generate synthetic Gaussian data
 #' k = 100        # sample size of each class

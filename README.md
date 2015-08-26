@@ -1,8 +1,8 @@
-[![Travis-CI Build Status](https://travis-ci.org/road2stat/sdml.svg?branch=master)](https://travis-ci.org/road2stat/sdml)
-[![Coverage Status](https://coveralls.io/repos/road2stat/sdml/badge.svg?branch=master)](https://coveralls.io/r/road2stat/sdml?branch=master)
+[![Travis-CI Build Status](https://travis-ci.org/terrytangyuan/dml.svg?branch=master)](https://travis-ci.org/terrytangyuan/dml)
+[![Coverage Status](https://coveralls.io/repos/terrytangyuan/dml/badge.svg?branch=master)](https://coveralls.io/r/terrytangyuan/dml?branch=master)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](http://badges.mit-license.org)
 
-# sdml
+# dml
 
 ## Brief Intro
 
@@ -14,16 +14,16 @@ Algorithms planned in the first development stage:
 
   * Supervised Global Distance Metric Learning:
   
-    * Relevant Component Analysis (RCA)
+    * Relevant Component Analysis (RCA) - implemented
     * Kernel Relevant Component Analysis (KRCA)
-    * Discriminative Component Analysis (DCA)
+    * Discriminative Component Analysis (DCA) - implemented
     * Kernel Discriminative Component Analysis (KDCA)
-    * Global Distance Metric Learning by Convex Programming (GDMLCP)
+    * Global Distance Metric Learning by Convex Programming - implemented
 
   * Supervised Local Distance Metric Learning:
 
-    * Local Fisher Discriminant Analysis (LFDA)
-    * Kernel Local Fisher Discriminant Analysis (KLFDA)
+    * Local Fisher Discriminant Analysis - implemented
+    * Kernel Local Fisher Discriminant Analysis - implemented
     * Information-Theoretic Metric Learning (ITML)
     * Large Margin Nearest Neighbor Classifier (LMNN)
     * Neighbourhood Components Analysis (NCA)
@@ -39,10 +39,5 @@ Report Bugs: https://github.com/road2stat/sdml/issues
 
 ## Contact
 
-Contact the authors of this package:
-
-Gao Tao <joegaotao@gmail.com>
-
-Xiao Nan <road2stat@gmail.com>
-
+Contact the maintainer of this package:
 Yuan Tang <terrytangyuan@gmail.com>

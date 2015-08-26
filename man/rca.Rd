@@ -58,6 +58,7 @@ Note that any different sets of instances (chunklets),
       same class and might belong to different classes.
 }
 \examples{
+\dontrun{
 set.seed(1234)
 require(MASS)  # generate synthetic Gaussian data
 k = 100        # sample size of each class
@@ -110,6 +111,7 @@ rca(x[ , 1:2], chunks)$A
 
 # The RCA suggested Mahalanobis matrix
 rca(x[ , 1:2], chunks)$B
+}
 }
 \author{
 Xiao Nan <\url{http://www.road2stat.com}>

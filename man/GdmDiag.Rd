@@ -4,8 +4,7 @@
 \alias{GdmDiag}
 \title{Global Distance Metric Learning}
 \usage{
-GdmDiag(data, simi, dism, C0 = 1, S1 = NULL, D1 = NULL,
-  threshold = 0.001)
+GdmDiag(data, simi, dism, C0 = 1, threshold = 0.001)
 }
 \arguments{
 \item{data}{\code{n * d} data matrix. \code{n} is the number of data points,
@@ -44,7 +43,7 @@ Put GdmDiag function details here.
 Be sure to check whether the dimension of original data and constrains' format are valid for the function.
 }
 \examples{
-\\donotrun{
+\dontrun{
 set.seed(602)
 library(MASS)
 library(scatterplot3d)

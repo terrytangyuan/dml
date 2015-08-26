@@ -53,6 +53,7 @@ Put DCA function details here.
 Put some note here.
 }
 \examples{
+\dontrun{
 set.seed(123)
 require(MASS)  # generate synthetic Gaussian data
 k = 100        # sample size of each class
@@ -99,6 +100,7 @@ plot(dcaData[, 1], dcaData[, 2], bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k
      pch = c(rep(22, k), rep(21, k), rep(25, k)),
      xlim = c(-15, 15), ylim = c(-15, 15))
 }
+}
 \author{
 Xiao Nan <\url{http://www.road2stat.com}>
 }
@@ -107,9 +109,6 @@ Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2006).
 Learning Distance Metrics with Contextual Constraints for Image Retrieval.
 \emph{Proceedings IEEE Conference on Computer Vision and Pattern Recognition
 (CVPR2006)}.
-}
-\seealso{
-See \code{\link{kdca}} for the kernelized version of DCA.
 }
 \keyword{component}
 \keyword{dca}

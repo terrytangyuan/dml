@@ -41,7 +41,7 @@ Put GdmFull function details here.
 Be sure to check whether the dimension of original data and constrains' format are valid for the function.
 }
 \examples{
-\\donotrun{
+\dontrun{
 set.seed(123)
 library(MASS)
 library(scatterplot3d)
