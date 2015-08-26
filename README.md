@@ -33,9 +33,9 @@ The algorithms and routines might be adjusted during developing.
 
 ## Links
 
-Track Devel: https://github.com/road2stat/sdml
+Track Devel: https://github.com/terrytangyuan/dml
 
-Report Bugs: https://github.com/road2stat/sdml/issues
+Report Bugs: https://github.com/terrytangyuan/dml/issues
 
 ## Contact
 
