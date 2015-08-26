@@ -15,7 +15,6 @@ Description: The dml package aims to implement the state-of-the-art
 Depends:
     MASS
 Imports:
-    rARPACK,
     lfda
 Suggests: testthat
 Author: Gao Tao <joegaotao@gmail.com>, Xiao Nan <road2stat@gmail.com>, Yuan Tang <terrytangyuan@gmail.com>
