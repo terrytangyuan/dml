@@ -1,0 +1,26 @@
+Package: dml
+Version: 1.0.0
+Date: 2015-08-26
+Title: Distance Metric Learning with R
+Description: The dml package aims to implement the state-of-the-art
+    algorithms for distance metric learning.
+    It includes global and local methods such as
+    (Kernel) Relevant Component Analysis,
+    (Kernel) Discriminative Component Analysis,
+    (Kernel) Local Fisher Discriminant Analysis, etc.
+    These distance metric learning methods are widely applied in
+    feature extraction, dimensionality reduction, clustering,
+    classification, information retrieval,
+    and computer vision problems.
+Depends:
+    MASS
+Imports:
+    rARPACK,
+    lfda
+Suggests: testthat
+Author: Gao Tao <joegaotao@gmail.com>, Xiao Nan <road2stat@gmail.com>, Yuan Tang <terrytangyuan@gmail.com>
+Maintainer: Yuan Tang <terrytangyuan@gmail.com>
+License: MIT + file LICENSE
+URL: https://github.com/terrytangyuan/dml
+BugReports: https://github.com/terrytangyuan/dml/issues
+
