@@ -45,6 +45,7 @@
 #' @author Xiao Nan <\url{http://www.road2stat.com}>
 #'
 #' @export dca
+#' @importFrom lfda %^%
 #'
 #' @references
 #' Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2006).

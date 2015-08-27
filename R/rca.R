@@ -54,6 +54,7 @@
 #' @seealso See \code{\link{dca}} for exploiting negative constrains.
 #'
 #' @export rca
+#' @importFrom lfda %^%
 #'
 #' @references
 #' Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
