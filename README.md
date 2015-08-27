@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/terrytangyuan/dml/badge.svg?branch=master)](https://coveralls.io/r/terrytangyuan/dml?branch=master)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](http://badges.mit-license.org)
 
-# dml
+# dml (Distance Metric Learning in R)
 
 ## Brief Intro
 

@@ -1,7 +1,7 @@
 Package: dml
-Version: 1.0.0
+Version: 1.1.0
 Date: 2015-08-26
-Title: Distance Metric Learning with R
+Title: Distance Metric Learning in R
 Description: The dml package aims to implement the state-of-the-art
     algorithms for distance metric learning.
     It includes global and local methods such as
