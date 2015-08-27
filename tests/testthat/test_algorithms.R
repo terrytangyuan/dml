@@ -36,7 +36,7 @@ test_that('dca works', {
   		1, 1, 1, 1, 0),
   		ncol = 5, byrow = TRUE)
 
-  # dcaData = dca(data = data, chunks = chunks, neglinks = neglinks)$newData # subscript out of bounds
+  expect_that(dca(data = data, chunks = chunks, neglinks = neglinks), not(throws_error()))
 })
 
 # generate necessary data set for gdmd and gdmf
@@ -53,11 +53,11 @@ tol <- as.data.frame(combn(1:(2*k), 2))
 dism <- t(as.matrix(tol[!tol %in% simi]))
 
 test_that('gdmd works', {
-  result <- GdmDiag(data, simi, dism)
+  expect_that(GdmDiag(data, simi, dism), not(throws_error()))
 })
 
 test_that('gdmf works', {
-  result <- GdmFull(data, simi, dism)
+  expect_that(GdmFull(data, simi, dism), not(throws_error()))
 })
 
 test_that('rca works', {
@@ -78,6 +78,6 @@ test_that('rca works', {
   chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5), ]
   chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5)
 
-  rca(x[ , 1:2], chunks)
+  expect_that(rca(x[ , 1:2], chunks), not(throws_error()))
 })
 
