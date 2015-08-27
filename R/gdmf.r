@@ -26,6 +26,10 @@
 #'
 #' @keywords GDM global distance metirc learning transformation mahalanobis metric
 #'
+#' @import MASS
+#'
+#' @export GdmFull
+#'
 #' @note Be sure to check whether the dimension of original data and constrains' format are valid for the function.
 #'
 #' @author Gao Tao <\url{http://www.gaotao.name}>

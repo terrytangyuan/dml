@@ -55,6 +55,7 @@
 #'
 #' @export rca
 #' @importFrom lfda %^%
+#' @import MASS
 #'
 #' @references
 #' Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).

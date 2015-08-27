@@ -46,6 +46,7 @@
 #'
 #' @export dca
 #' @importFrom lfda %^%
+#' @import MASS
 #'
 #' @references
 #' Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2006).
@@ -151,7 +152,7 @@ dca <- function(data, chunks, neglinks, useD = NULL) {
 	for (j in 1:s) {
 		inds = which(chunks == j)
 		for (i in 1:length(inds)) {
-			Cw = Cw + ((data[ , inds[i]] - M[ , j]) %*% t(data[ , inds[i]] - M[ , j]))
+			Cw = Cw + ((data[ , inds[i]] - M[ , j]) %*% t(data[ , inds[i]] - M[ , j])) # subscript out of bounds
 		}
 		N_w = N_w + length(inds)
 	}

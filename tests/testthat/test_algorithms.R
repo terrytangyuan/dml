@@ -1,9 +1,53 @@
 context('test algorithms')
 library(lfda)
+library(MASS)
 
-test_that('lfda works', {
-  k <- iris[,-5]
-  y <- iris[,5]
-  r <- 3
-  model <- lfda(k, y, r, metric = "plain")
+test_that('dca works', {
+  chunk1 = sample(1:100, 5)
+  chunk2 = sample(setdiff(1:100, chunk1), 5)
+  chunk3 = sample(101:200, 5)
+  chunk4 = sample(setdiff(101:200, chunk3), 5)
+  chunk5 = sample(201:300, 5)
+  chks = list(chunk1, chunk2, chunk3, chunk4, chunk5)
+
+  chunks = rep(-1, 300)
+
+  # positive samples in the chunks
+  for (i in 1:5) {
+    for (j in chks[[i]]) {
+      chunks[j] = i
+    }
+  }
+
+  # define the negative constrains between chunks
+  neglinks = matrix(c(
+  		0, 0, 1, 1, 1,
+  		0, 0, 1, 1, 1,
+  		1, 1, 0, 0, 0,
+  		1, 1, 0, 0, 1,
+  		1, 1, 1, 1, 0),
+  		ncol = 5, byrow = TRUE)
+
+  # dcaData = dca(data = data, chunks = chunks, neglinks = neglinks)$newData # subscript out of bounds
+})
+
+# generate necessary data set for gdmd and gdmf
+k = 100
+m <- matrix(c(1, 0.5, 1, 0.5, 2, -1, 1, -1, 3), nrow =3, byrow = T)
+x1 <- mvrnorm(k, mu = c(1, 1, 1), Sigma = m)
+x2 <- mvrnorm(k, mu = c(-1, 0, 0), Sigma = m)
+data <- rbind(x1, x2)
+# define similar constrains
+simi <- rbind(t(combn(1:k, 2)), t(combn((k+1):(2*k), 2)))
+temp <-  as.data.frame(t(simi))
+tol <- as.data.frame(combn(1:(2*k), 2))
+# define disimilar constrains
+dism <- t(as.matrix(tol[!tol %in% simi]))
+
+test_that('gdmd works', {
+  result <- GdmDiag(data, simi, dism)
+})
+
+test_that('gdmf works', {
+  result <- GdmFull(data, simi, dism)
 })

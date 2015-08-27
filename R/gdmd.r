@@ -31,6 +31,9 @@
 #'
 #' @author Gao Tao <\url{http://www.gaotao.name}>
 #'
+#' @export GdmDiag
+#' @import MASS
+#'
 #' @references
 #' Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2003).
 #' Distance metric learning, with application to clustering with side-information.
@@ -155,7 +158,7 @@ GdmDiag <- function(data, simi, dism, C0 = 1, threshold = 0.001) {
 		a <- a.previous
 		error <- abs((obj.previous - obj.initial)/obj.previous)
 		}
-		diagnoalA <- diag(as.numeric(a))
+		diagonalA <- diag(as.numeric(a))
 		dmlA <- sqrt(diagonalA)
 		newData <- data %*% dmlA
 
