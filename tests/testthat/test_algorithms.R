@@ -51,3 +51,25 @@ test_that('gdmd works', {
 test_that('gdmf works', {
   result <- GdmFull(data, simi, dism)
 })
+
+test_that('rca works', {
+  k = 100        # sample size of each class
+  n = 3          # specify how many class
+  N = k * n      # total sample number
+  x1 = mvrnorm(k, mu = c(-10, 6), matrix(c(10, 4, 4, 10), ncol = 2))
+  x2 = mvrnorm(k, mu = c(0, 0), matrix(c(10, 4, 4, 10), ncol = 2))
+  x3 = mvrnorm(k, mu = c(10, -6), matrix(c(10, 4, 4, 10), ncol = 2))
+  x = as.data.frame(rbind(x1, x2, x3))
+  x$V3 = gl(n, k)
+
+  chunk1 = sample(1:100, 5)
+  chunk2 = sample(setdiff(1:100, chunk1), 5)
+  chunk3 = sample(101:200, 5)
+  chunk4 = sample(setdiff(101:200, chunk3), 5)
+  chunk5 = sample(201:300, 5)
+  chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5), ]
+  chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5)
+
+  rca(x[ , 1:2], chunks)
+})
+
