@@ -3,6 +3,14 @@ library(lfda)
 library(MASS)
 
 test_that('dca works', {
+  k = 100        # sample size of each class
+  n = 3          # specify how many class
+  N = k * n      # total sample number
+  x1 = mvrnorm(k, mu = c(-10, 6), matrix(c(10, 4, 4, 10), ncol = 2))
+  x2 = mvrnorm(k, mu = c(0, 0), matrix(c(10, 4, 4, 10), ncol = 2))
+  x3 = mvrnorm(k, mu = c(10, -6), matrix(c(10, 4, 4, 10), ncol = 2))
+  data = as.data.frame(rbind(x1, x2, x3))
+
   chunk1 = sample(1:100, 5)
   chunk2 = sample(setdiff(1:100, chunk1), 5)
   chunk3 = sample(101:200, 5)
