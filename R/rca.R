@@ -56,6 +56,7 @@
 #' @export rca
 #' @importFrom lfda %^%
 #' @import MASS
+#' @importFrom stats cov
 #'
 #' @references
 #' Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
