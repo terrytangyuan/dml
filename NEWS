@@ -1,10 +1,5 @@
-Version 1.0.0 (2012-01-10)
+Version 1.0.0 (2012-01-10) - Initial Release
 ------------------------------------------------------------------------------
-
-* initial release
-
-NEW FEATURES
-
 * initial version of the Relevant Component Analysis (RCA) algorithm
 * initial version of the Kernel Relevant Component Analysis (KRCA) algorithm
 * initial version of the Local Fisher Discriminant Analysis (LFDA) algorithm
@@ -12,16 +7,7 @@ NEW FEATURES
 * initial version of the Discriminative Component Analysis (DCA) algorithm
 * initial version of the Kernel Discriminative Component Analysis (KDCA) algorithm
 
-Version 1.1.0 (2015-08-27)
+Version 1.1.0 (2015-08-27) - Stable Version
 ------------------------------------------------------------------------------
-
-* development version
-
-NEW FEATURE
-
-* Semi-supervised Local Fisher Discriminant Analysis (SELF) algorithm
-
-CHANGES
-
-* All other existing algorithms in this package are tested
-
+* Added Semi-supervised Local Fisher Discriminant Analysis (SELF) algorithm
+* Existing algorithms in this package are tested
