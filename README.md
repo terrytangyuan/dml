@@ -17,6 +17,9 @@ install.packages('dml')
 devtools::install_github('terrytangyuan/dml')
 ```
 
+## Examples:
+For examples of Local Fisher Discriminant Analysis, please take a look at the separate package [here](https://github.com/terrytangyuan/lfda). For examples of all other implemented algorithms, please take a look at the dml [package reference manual](https://cran.r-project.org/web/packages/dml/dml.pdf). 
+
 ## Brief Intro
 
 Distance metric is widely used in the machine learning literature. We used to choose a distance metric according to a priori (Euclidean Distance , L1 Distance, etc.) or according to the result of cross validation within small class of functions (e.g. choosing order of polynomial for a kernel). Actually, with priori knowledge of the data, we could learn a more suitable distance metric with (semi-)supervised distance metric learning techniques. dml is such an R package aims to implement the state-of-the-art algorithms for (semi-)supervised distance metric learning. These distance metric learning methods are widely applied in feature extraction, dimensionality reduction, clustering, classification, information retrieval, and computer vision problems.
