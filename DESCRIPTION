@@ -13,6 +13,7 @@ Depends:
 Imports:
     lfda
 Suggests:
+    lintr,
     testthat
 Author: Yuan Tang <terrytangyuan@gmail.com>, Gao Tao <joegaotao@gmail.com>, Xiao
     Nan <road2stat@gmail.com>
