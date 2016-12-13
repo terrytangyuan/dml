@@ -233,5 +233,34 @@ GdmFull <- function(data, simi, dism, maxiter = 100) {
 		eigenvalue <- eigen(iterproj$fullA)
 		dml <- eigenvalue[[2]] %*% sqrt(diag(eigenvalue[[1]], d))
 		newData <- data %*% dml
-		return(list("newData" = newData, "fullA" = iterproj[[2]], "dmlA" = dml, "converged" = iterproj[[1]]))
+		out <- list("newData" = newData, "fullA" = iterproj[[2]], "dmlA" = dml, "converged" = iterproj[[1]])
+		
+		class(out) <- 'gmdf'
+		return(out)
+}
+#' Print a gmdf object
+#'
+#' Print a gmdf object
+#' @param x The result from gmdf function, which contains TK
+#' @param ... ignored
+#' @export
+#' @importFrom utils head
+#' @method print gmdf
+print.gmdf <- function(x, ...){
+  cat("Results for Global Distance Metric Learning \n\n")
+  cat("Transformed data: \n")
+  print(head(x$newData))
+  
+  cat("\n\n Suggested Mahalanobis matrix: \n")
+  print(head(x$fullA))
+  
+  cat("\n\n Matrix by which data is transformed:  \n")
+  print(head(x$dmlA))
+  
+  cat("\n\n Did iteration-projection optimization converge? \n")
+  print(head(x$converged))
+  
+  cat("\n")
+  cat("Only partial output is shown above. Please see the model output for more details. \n")
+  invisible(x)
 }

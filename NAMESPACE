@@ -2,6 +2,8 @@
 
 S3method(print,GdmDiag)
 S3method(print,dca)
+S3method(print,gmdf)
+S3method(print,rca)
 export(GdmDiag)
 export(GdmFull)
 export(dca)

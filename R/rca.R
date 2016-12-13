@@ -152,5 +152,32 @@ rca <- function(x, chunks) {
 
 	newX = as.matrix(x) %*% A        # original data transformed
 
-	return(list("B" = B, "A" = A, "newX" = newX))
+	out <- list("B" = B, "A" = A, "newX" = newX)
+	
+	class(out) <- 'rca'
+	return(out)
+}
+#' Print an rca object
+#'
+#' Print an rca object
+#' @param x The result from rca function, which contains mahalanobis metric,
+#' whitening transformation matrix, and transformed data
+#' @param ... ignored
+#' @export
+#' @importFrom utils head
+#' @method print rca
+print.rca <- function(x, ...){
+  cat("Results for Relevant Component Analysis \n\n")
+  cat("The Mahalanobis metric is: \n")
+  print(head(x$B))
+  
+  cat("\n\n The whitening transformation matrix is:  \n")
+  print(head(x$A))
+  
+  cat("\n\n The original data transformed is:  \n")
+  print(head(x$newX))
+  
+  cat("\n")
+  cat("Only partial output is shown above. Please see the model output for more details. \n")
+  invisible(x)
 }
