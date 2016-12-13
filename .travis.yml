@@ -33,9 +33,10 @@ r_github_packages:
 before_install:
   - if [[ "$PKG" == "DEV" ]]; then
     - echo "Building development branch..."
+    fi
   - if [[ "$PKG" == "STD" ]]; then
     - echo "Building standard branch..."
-
+    fi
   - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" >> ~/.Rprofile
 
 after_success:
