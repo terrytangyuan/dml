@@ -35,4 +35,3 @@ scatterplot3d(newData, color = color, cex.symbols = 0.6,
 		  ylim = range(data[, 2], newData[, 2]),
 		  zlim = range(data[, 3], newData[, 3]),
 		  main = "Transformed Data")
-}
