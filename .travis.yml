@@ -1,12 +1,13 @@
-
 language: r
 warnings_are_errors: true
 sudo: required
 
 env:
- global:
-   - CRAN: http://cran.rstudio.com
-   - RGL_USE_NULL: true
+  global:
+    - PKG=DEV
+    - PKG=STD
+    - CRAN: http://cran.rstudio.com
+    - RGL_USE_NULL: true
 
 notifications:
   email:
@@ -28,8 +29,15 @@ r_github_packages:
   - hadley/devtools
   - jimhester/covr
   - terrytangyuan/lfda
-  
+
 before_install:
+  - if [[ "$PKG" == "DEV" ]]; then
+      echo "Building development branch...";
+      Rscript -e 'install.packages("devtools")';
+    fi
+  - if [[ "$PKG" == "STD" ]]; then
+      echo "Building standard branch...";
+    fi
   - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" >> ~/.Rprofile
 
 after_success:
