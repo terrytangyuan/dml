@@ -4,6 +4,8 @@ warnings_are_errors: true
 sudo: required
 
 env:
+ - PKG=DEV
+ - PKG=STD
  global:
    - CRAN: http://cran.rstudio.com
    - RGL_USE_NULL: true
@@ -30,7 +32,11 @@ r_github_packages:
   - terrytangyuan/lfda
 
 before_install:
-  - echo "Hello WOrld!"
+  - if [[ "$PKG" == "DEV" ]]; then
+    - echo "Building development branch..."
+  - if [[ "$PKG" == "STD" ]]; then
+    - echo "Building standard branch..."
+
   - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" >> ~/.Rprofile
 
 after_success:
