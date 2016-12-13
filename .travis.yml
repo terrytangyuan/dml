@@ -5,9 +5,9 @@ sudo: required
 env:
   - PKG=DEV
   - PKG=STD
- global:
-   - CRAN: http://cran.rstudio.com
-   - RGL_USE_NULL: true
+  global:
+    - CRAN: http://cran.rstudio.com
+    - RGL_USE_NULL: true
 
 notifications:
   email:
