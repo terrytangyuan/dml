@@ -2,15 +2,22 @@ Package: dml
 Version: 1.1.0.9000
 Date: 2015-08-26
 Title: Distance Metric Learning in R
-Description: The state-of-the-art algorithms for distance metric learning, including global and local methods such as Relevant Component Analysis, Discriminative Component Analysis, Local Fisher Discriminant Analysis, etc. These distance metric learning methods are widely applied in feature extraction, dimensionality reduction, clustering, classification, information retrieval, and computer vision problems.
+Description: The state-of-the-art algorithms for distance metric learning,
+    including global and local methods such as Relevant Component Analysis,
+    Discriminative Component Analysis, Local Fisher Discriminant Analysis, etc.
+    These distance metric learning methods are widely applied in feature extraction,
+    dimensionality reduction, clustering, classification, information retrieval, and
+    computer vision problems.
 Depends:
     MASS
 Imports:
     lfda
-Suggests: testthat
-Author: Yuan Tang <terrytangyuan@gmail.com>, Gao Tao <joegaotao@gmail.com>, Xiao Nan <road2stat@gmail.com>
+Suggests:
+    testthat
+Author: Yuan Tang <terrytangyuan@gmail.com>, Gao Tao <joegaotao@gmail.com>, Xiao
+    Nan <road2stat@gmail.com>
 Maintainer: Yuan Tang <terrytangyuan@gmail.com>
 License: MIT + file LICENSE
 URL: https://github.com/terrytangyuan/dml
 BugReports: https://github.com/terrytangyuan/dml/issues
-
+RoxygenNote: 5.0.1
