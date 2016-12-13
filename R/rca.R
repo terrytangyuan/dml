@@ -152,7 +152,10 @@ rca <- function(x, chunks) {
 
 	newX = as.matrix(x) %*% A        # original data transformed
 
-	return(list("B" = B, "A" = A, "newX" = newX))
+	out <- list("B" = B, "A" = A, "newX" = newX)
+	
+	class(out) <- 'rca'
+	return(out)
 }
 #' Print an rca object
 #'
@@ -160,7 +163,6 @@ rca <- function(x, chunks) {
 #' @param x The result from rca function, which contains mahalanobis metric,
 #' whitening transformation matrix, and transformed data
 #' @param ... ignored
-
 #' @export
 #' @importFrom utils head
 #' @method print rca
