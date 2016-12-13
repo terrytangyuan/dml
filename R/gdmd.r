@@ -161,6 +161,41 @@ GdmDiag <- function(data, simi, dism, C0 = 1, threshold = 0.001) {
 		diagonalA <- diag(as.numeric(a))
 		dmlA <- sqrt(diagonalA)
 		newData <- data %*% dmlA
+    out <- list("newData" = newData, "diagonalA" = diagonalA, "dmlA" = dmlA, "error" = error)
+    class(out) <- 'GdmDiag'
+		return(out)
+}
 
-		return(list("newData" = newData, "diagonalA" = diagonalA, "dmlA" = dmlA, "error" = error))
+#' Print an GdmDiag object
+#'
+#' Print an GdmDiag object
+#' @param x The result from dca function, which contains a list of the GdmDiag results:
+#' \item{newData}{GdmDiag transformed data}
+#' \item{diagonalA}{suggested Mahalanobis matrix}
+#' \item{dmlA}{matrix to transform data, square root of diagonalA }
+#' \item{error}{the precision of obtained distance metric by Newton-Raphson optimization }
+#' @param ... ignored
+#' @export
+#' @importFrom utils head
+#' @method print GdmDiag
+print.GdmDiag <- function(x, ...){
+  cat("Results for Discriminative Component Analysis \n\n")
+  cat("The GdmDiag transformed data is: \n")
+  print(head(x$newData))
+  
+  cat("\n")
+  cat("The suggested Mahalanobis matrix is: \n")
+  print(head(x$diagonalA))
+  
+  cat("\n")
+  cat("The matrix to transform data, square root of diagonalA is: \n")
+  print(head(x$dmlA))
+  
+  cat("\n")
+  cat("The precision of obtained distance metric by Newton-Raphson optimization is: \n")
+  print(head(x$error))
+  
+  cat("\n")
+  cat("Only partial output is shown above. Please see the model output for more details. \n")
+  invisible(x)
 }

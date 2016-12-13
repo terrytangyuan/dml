@@ -188,6 +188,38 @@ dca <- function(data, chunks, neglinks, useD = NULL) {
 	DCA = (Dw %^% (-0.5)) %*% t(eigVec) %*% t(Z)
 	B = t(DCA) %*% as.matrix(DCA)
 	newData = t(DCA %*% data)
+  out <- list("B" = B, "DCA" = DCA, "newData" = newData)
+  class(out) <- 'dca'
+	return(out)
+}
 
-	return(list("B" = B, "DCA" = DCA, "newData" = newData))
+
+#' Print an dca object
+#'
+#' Print an dca object
+#' @param x The result from dca function, which contains a list of the DCA results:
+#' \item{B}{DCA suggested Mahalanobis matrix}
+#' \item{DCA}{DCA suggested transformation of the data.
+#'            The dimension is (original data dimension) * (useD)}
+#' \item{newData}{DCA transformed data}
+#' @param ... ignored
+#' @export
+#' @importFrom utils head
+#' @method print dca
+print.dca <- function(x, ...){
+  cat("Results for Discriminative Component Analysis \n\n")
+  cat("The DCA suggested Mahalanobis matrix is: \n")
+  print(head(x$B))
+  
+  cat("\n")
+  cat("The DCA suggested transformation of the data is: \n")
+  print(head(x$DCA))
+  
+  cat("\n")
+  cat("The DCA transformed data is: \n")
+  print(head(x$newData))
+  
+  cat("\n")
+  cat("Only partial output is shown above. Please see the model output for more details. \n")
+  invisible(x)
 }
