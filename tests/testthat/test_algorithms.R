@@ -78,7 +78,6 @@ test_that('dca works with useD', {
   expect_that(dca(data = data, chunks = chunks, neglinks = neglinks, useD = useD), not(throws_error()))
 })
 
-
 # generate necessary data set for gdmd and gdmf
 k = 100
 m <- matrix(c(1, 0.5, 1, 0.5, 2, -1, 1, -1, 3), nrow =3, byrow = T)
