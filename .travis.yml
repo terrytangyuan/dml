@@ -3,9 +3,9 @@ warnings_are_errors: true
 sudo: required
 
 env:
-  - PKG=DEV
-  - PKG=STD
   global:
+    - PKG=DEV
+    - PKG=STD
     - CRAN: http://cran.rstudio.com
     - RGL_USE_NULL: true
 
