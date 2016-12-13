@@ -81,7 +81,30 @@
 #' }
 #'
 GdmFull <- function(data, simi, dism, maxiter = 100) {
-		data <- as.matrix(data)
+		
+        # Input class checks
+        data <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = data)
+        simi <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = simi)
+        dism <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = dism)
+        if (!(is.numeric(maxiter) && length(maxiter) == 1)) {
+            errorTxt <- sprintf("maxiter of GdmFull expects a number. An object of class %s was provided."
+                                , paste(class(maxiter), collapse = "")) 
+            stop(errorTxt)
+        }
+        
+        # Input dimension checks
+        if (!dim(simi)[2] == 2) {
+            errorTxt <- sprintf("The object passed to simi should be an n x 2 matrix. You provided an object with dimensions %s"
+                                , paste(dim(simi), collapse = " x "))
+            stop(errorTxt)
+        }
+        
+        if (!dim(dism)[2] == 2) {
+            errorTxt <- sprintf("The object passed to dism should be an n x 2 matrix. You provided an object with dimensions %s"
+                                , paste(dim(dism), collapse = " x "))
+            stop(errorTxt)
+        }
+        
 		N <- dim(data)[1]
 		d <- dim(data)[2]
 		new.simi <- unique(t(apply(simi, 1, sort)))
@@ -238,6 +261,7 @@ GdmFull <- function(data, simi, dism, maxiter = 100) {
 		class(out) <- 'gmdf'
 		return(out)
 }
+
 #' Print a gmdf object
 #'
 #' Print a gmdf object
@@ -263,4 +287,32 @@ print.gmdf <- function(x, ...){
   cat("\n")
   cat("Only partial output is shown above. Please see the model output for more details. \n")
   invisible(x)
+}
+
+# non-exported checker to throw informative errors if passed-in object
+# is not a matrix or coercable to a numeric matrix
+.checkMatrixInput <- function(functionName, argName, inputObject){
+    
+    # Input check
+    if (!is.matrix(inputObject)) {
+        
+        # 1. Can you coerce to a matrix?
+        inputObject <- tryCatch({
+            as.matrix(inputObject)
+        }, error = function(e){
+            errorTxt <- sprintf("%s argument of %s expects an object coercible to a numeric matrix. An object of class %s was provided."
+                                 , argName, functionName, paste(class(inputObject), collapse = ""))
+            stop(errorTxt)
+        }
+        )
+        
+        # 2. Does that matrix contain numeric data?
+        if (!is.numeric(inputObject)){
+            errorTxt <- sprintf("%s argument of %s expects an object coercible to a numeric matrix. An object of class %s was provided."
+                                , argName, functionName, paste(class(inputObject), collapse = "")) 
+            stop(errorTxt)
+        }
+    }
+    
+    return(inputObject)
 }
