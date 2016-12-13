@@ -20,7 +20,6 @@ apt_packages:
   - xserver-xorg
   - xorg
   - openbox
-  - xauth
 
 r_github_packages:
   - hadley/devtools
