@@ -28,8 +28,9 @@ r_github_packages:
   - hadley/devtools
   - jimhester/covr
   - terrytangyuan/lfda
-  
+
 before_install:
+  - echo "Hello WOrld!"
   - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" >> ~/.Rprofile
 
 after_success:
