@@ -17,7 +17,7 @@
 #' @return list of the GdmDiag results:
 #' \item{newData}{GdmDiag transformed data}
 #' \item{fullA}{suggested Mahalanobis matrix}
-#' \item{dmlA}{matrix to transform data, square root of diagonalA }
+#' \item{dmlA}{matrix to transform data, square root of fullA }
 #' \item{converged}{whether the iteration-projection optimization is converged or not}
 #'
 #' For every two original data points (x1, x2) in newData (y1, y2):
@@ -59,7 +59,7 @@
 #' tol <- as.data.frame(combn(1:(2*k), 2))
 #'
 #' # define disimilar constrains
-#' dism <- t(as.matrix(tol[!tol %in% simi]))
+#' dism <- t(as.matrix(tol[!tol %in% temp]))
 #'
 #' # transform data using GdmFull
 #' result <- GdmFull(data, simi, dism)
@@ -81,12 +81,34 @@
 #' }
 #'
 GdmFull <- function(data, simi, dism, maxiter = 100) {
+  
 		data <- as.matrix(data)
+		
+		# Check that simi and dism are k*2 matrices
+		if (dim(simi)[2] != 2) {
+		  stop(paste('simi needs to be of dimensions k*2 but has dimensions:', paste(dim(simi), collapse = ", ")))
+		}
+		if (dim(dism)[2] != 2) {
+		  stop(paste('dism needs to be of dimensions k*2 but has dimensions:', paste(dim(dism), collapse = ", ")))
+		}
+		
 		N <- dim(data)[1]
 		d <- dim(data)[2]
 		new.simi <- unique(t(apply(simi, 1, sort)))
 		new.dism <- unique(t(apply(dism, 1, sort)))
-
+		
+		# Check that simi and dism do not overlap
+		dup.pairs <- duplicated(rbind(new.simi, new.dism), MARGIN = 1)
+		if (any(dup.pairs)) stop(paste('There are',sum(dup.pairs),'overlapping pairs in simi and dism.'))
+		
+		# Check that all indices in simi and dism are in the range 1:N
+		if (any(new.simi < 1) || any(new.simi > N)) {
+		  stop(paste('Some indices in simi are out of range of data.'))
+		}
+		if (any(new.dism < 1) || any(new.dism > N)) {
+		  stop(paste('Some indices in dism are out of range of data.'))
+		}
+		
 		A <- diag(1, d) * 0.1
 		W <- mat.or.vec(d, d)
 		dij <- mat.or.vec(1, d)
