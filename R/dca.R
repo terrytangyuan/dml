@@ -197,11 +197,9 @@ dca <- function(data, chunks, neglinks, useD = NULL) {
 #' Print an dca object
 #'
 #' Print an dca object
-#' @param x The result from dca function, which contains a list of the DCA results:
-#' \item{B}{DCA suggested Mahalanobis matrix}
-#' \item{DCA}{DCA suggested transformation of the data.
-#'            The dimension is (original data dimension) * (useD)}
-#' \item{newData}{DCA transformed data}
+#' 
+#' @param x The result from the dca function.
+#' 
 #' @param ... ignored
 #' @export
 #' @importFrom utils head

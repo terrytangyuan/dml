@@ -7,11 +7,7 @@
 \method{print}{dca}(x, ...)
 }
 \arguments{
-\item{x}{The result from dca function, which contains a list of the DCA results:
-\item{B}{DCA suggested Mahalanobis matrix}
-\item{DCA}{DCA suggested transformation of the data.
-           The dimension is (original data dimension) * (useD)}
-\item{newData}{DCA transformed data}}
+\item{x}{The result from the dca function.}
 
 \item{...}{ignored}
 }

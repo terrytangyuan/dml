@@ -169,11 +169,9 @@ GdmDiag <- function(data, simi, dism, C0 = 1, threshold = 0.001) {
 #' Print an GdmDiag object
 #'
 #' Print an GdmDiag object
-#' @param x The result from dca function, which contains a list of the GdmDiag results:
-#' \item{newData}{GdmDiag transformed data}
-#' \item{diagonalA}{suggested Mahalanobis matrix}
-#' \item{dmlA}{matrix to transform data, square root of diagonalA }
-#' \item{error}{the precision of obtained distance metric by Newton-Raphson optimization }
+#' 
+#' @param x The result from GdmDiag function.
+#' 
 #' @param ... ignored
 #' @export
 #' @importFrom utils head

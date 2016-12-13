@@ -7,11 +7,7 @@
 \method{print}{GdmDiag}(x, ...)
 }
 \arguments{
-\item{x}{The result from dca function, which contains a list of the GdmDiag results:
-\item{newData}{GdmDiag transformed data}
-\item{diagonalA}{suggested Mahalanobis matrix}
-\item{dmlA}{matrix to transform data, square root of diagonalA }
-\item{error}{the precision of obtained distance metric by Newton-Raphson optimization }}
+\item{x}{The result from GdmDiag function.}
 
 \item{...}{ignored}
 }
