@@ -22,7 +22,6 @@ apt_packages:
   - openbox
   - xauth
   - libcurl4-openssl-dev
-  - curl
 
 r_github_packages:
   - hadley/devtools
