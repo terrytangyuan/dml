@@ -36,7 +36,7 @@ test_that('dca works', {
   		1, 1, 1, 1, 0),
   		ncol = 5, byrow = TRUE)
 
-  expect_that(dca(data = data, chunks = chunks, neglinks = neglinks), not(throws_error()))
+  dca(data = data, chunks = chunks, neglinks = neglinks)
 })
 
 # generate necessary data set for gdmd and gdmf
@@ -53,11 +53,11 @@ tol <- as.data.frame(combn(1:(2*k), 2))
 dism <- t(as.matrix(tol[!tol %in% simi]))
 
 test_that('gdmd works', {
-  expect_that(GdmDiag(data, simi, dism), not(throws_error()))
+  GdmDiag(data, simi, dism)
 })
 
 test_that('gdmf works', {
-  expect_that(GdmFull(data, simi, dism), not(throws_error()))
+    GdmFull(data, simi, dism)
 })
 
 test_that('rca works', {
@@ -77,7 +77,7 @@ test_that('rca works', {
   chunk5 = sample(201:300, 5)
   chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5), ]
   chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5)
-
-  expect_that(rca(x[ , 1:2], chunks), not(throws_error()))
+  
+  rca(x[ , 1:2], chunks)
 })
 
