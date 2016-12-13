@@ -19,7 +19,6 @@ apt_packages:
   - xserver-xorg-core
   - xserver-xorg
   - xorg
-  - openbox
 
 r_github_packages:
   - hadley/devtools
