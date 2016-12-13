@@ -18,8 +18,7 @@ apt_packages:
   - xvfb
   - xserver-xorg-core
   - xserver-xorg
-  - xorg
-
+  
 r_github_packages:
   - hadley/devtools
   - jimhester/covr
