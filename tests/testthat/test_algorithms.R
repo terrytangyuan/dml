@@ -94,43 +94,43 @@ breakIT <- matrix(data = seq(100), ncol = 5, nrow = 20)
 
 test_that('gdmd works', {
   GdmDiag(data, simi, dism)
-  expect_error(GdmDiag(data = function(x){4}, simi = simi, dism = dism)
-                 , regexp = "expects an object coercible to a numeric matrix")
-  expect_error(GdmDiag(data = data, simi = function(x){4}, dism = dism)
-                 , regexp = "expects an object coercible to a numeric matrix")
-  expect_error(GdmDiag(data = data, simi = simi, dism = function(x){4})
-                 , regexp = "expects an object coercible to a numeric matrix")
-  expect_error(GdmDiag(data = data, simi = breakIT, dism = dism)
-                 , regexp = 'The object passed to simi should be an n x 2 matrix')
-  expect_error(GdmDiag(data = data, simi = simi , dism = breakIT)
-                 , regexp = 'The object passed to dism should be an n x 2 matrix')
-  expect_error(GdmDiag(data = data, simi = simi, dism = dism, C0 = seq(5))
-                 , regexp = 'C0 of GdmDiag expects a number. An object of class')
-  expect_error(GdmDiag(data = data, simi = simi, dism = dism, C0 = 'F')
-                 , regexp = 'C0 of GdmDiag expects a number. An object of class')
-  expect_error(GdmDiag(data = data, simi = simi, dism = dism, threshold = seq(5))
-                 , regexp = 'threshold of GdmDiag expects a number. An object of class')
-  expect_error(GdmDiag(data = data, simi = simi, dism = dism, threshold = 'F')
-                 , regexp = 'threshold of GdmDiag expects a number. An object of class')
+  expect_error(GdmDiag(data = function(x){4}, simi = simi, dism = dism),
+               regexp = "expects an object coercible to a numeric matrix")
+  expect_error(GdmDiag(data = data, simi = function(x){4}, dism = dism),
+               regexp = "expects an object coercible to a numeric matrix")
+  expect_error(GdmDiag(data = data, simi = simi, dism = function(x){4}),
+               regexp = "expects an object coercible to a numeric matrix")
+  expect_error(GdmDiag(data = data, simi = breakIT, dism = dism),
+               regexp = 'The object passed to simi should be an n x 2 matrix')
+  expect_error(GdmDiag(data = data, simi = simi , dism = breakIT),
+               regexp = 'The object passed to dism should be an n x 2 matrix')
+  expect_error(GdmDiag(data = data, simi = simi, dism = dism, C0 = seq(5)),
+               regexp = 'C0 of GdmDiag expects a number. An object of class')
+  expect_error(GdmDiag(data = data, simi = simi, dism = dism, C0 = 'F'),
+               regexp = 'C0 of GdmDiag expects a number. An object of class')
+  expect_error(GdmDiag(data = data, simi = simi, dism = dism, threshold = seq(5)),
+               regexp = 'threshold of GdmDiag expects a number. An object of class')
+  expect_error(GdmDiag(data = data, simi = simi, dism = dism, threshold = 'F'),
+               regexp = 'threshold of GdmDiag expects a number. An object of class')
 
 })
 
 test_that('gdmf works', {
     GdmFull(data, simi, dism)
-    expect_error(GdmFull(data = function(x){4}, simi = simi, dism = dism)
-                 , regexp = "expects an object coercible to a numeric matrix")
-    expect_error(GdmFull(data = data, simi = function(x){4}, dism = dism)
-                 , regexp = "expects an object coercible to a numeric matrix")
-    expect_error(GdmFull(data = data, simi = simi, dism = function(x){4})
-                 , regexp = "expects an object coercible to a numeric matrix")
-    expect_error(GdmFull(data = data, simi = breakIT, dism = dism)
-                 , regexp = 'The object passed to simi should be an n x 2 matrix')
-    expect_error(GdmFull(data = data, simi = simi , dism = breakIT)
-                 , regexp = 'The object passed to dism should be an n x 2 matrix')
-    expect_error(GdmFull(data = data, simi = simi, dism = dism, maxiter = seq(5))
-                 , regexp = 'maxiter of GdmFull expects a number. An object of class')
-    expect_error(GdmFull(data = data, simi = simi, dism = dism, maxiter = 'F')
-                 , regexp = 'maxiter of GdmFull expects a number. An object of class')
+    expect_error(GdmFull(data = function(x){4}, simi = simi, dism = dism),
+                 regexp = "expects an object coercible to a numeric matrix")
+    expect_error(GdmFull(data = data, simi = function(x){4}, dism = dism),
+                 regexp = "expects an object coercible to a numeric matrix")
+    expect_error(GdmFull(data = data, simi = simi, dism = function(x){4}),
+                 regexp = "expects an object coercible to a numeric matrix")
+    expect_error(GdmFull(data = data, simi = breakIT, dism = dism),
+                 regexp = 'The object passed to simi should be an n x 2 matrix')
+    expect_error(GdmFull(data = data, simi = simi , dism = breakIT),
+                 regexp = 'The object passed to dism should be an n x 2 matrix')
+    expect_error(GdmFull(data = data, simi = simi, dism = dism, maxiter = seq(5)),
+                 regexp = 'maxiter of GdmFull expects a number. An object of class')
+    expect_error(GdmFull(data = data, simi = simi, dism = dism, maxiter = 'F'),
+                 regexp = 'maxiter of GdmFull expects a number. An object of class')
 })
 
 test_that('rca works', {
