@@ -84,8 +84,8 @@ GdmFull <- function(data, simi, dism, maxiter = 100) {
 		
         # Input class checks
         data <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = data)
-        simi <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = simi)
-        dism <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = dism)
+        simi <- .checkMatrixInput(functionName = "GdmFull", argName = "simi", inputObject = simi)
+        dism <- .checkMatrixInput(functionName = "GdmFull", argName = "dism", inputObject = dism)
         if (!(is.numeric(maxiter) && length(maxiter) == 1)) {
             errorTxt <- sprintf("maxiter of GdmFull expects a number. An object of class %s was provided."
                                 , paste(class(maxiter), collapse = "")) 
