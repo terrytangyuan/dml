@@ -86,9 +86,9 @@ GdmDiag <- function(data, simi, dism, C0 = 1, threshold = 0.001) {
 		reduction = 2
 
 		# Input class checks
-        data <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = data)
-        simi <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = simi)
-        dism <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = dism)
+        data <- .checkMatrixInput(functionName = "GdmDiag", argName = "data", inputObject = data)
+        simi <- .checkMatrixInput(functionName = "GdmDiag", argName = "simi", inputObject = simi)
+        dism <- .checkMatrixInput(functionName = "GdmDiag", argName = "dism", inputObject = dism)
         if (!(is.numeric(C0) && length(C0) == 1)) {
             errorTxt <- sprintf("C0 of GdmDiag expects a number. An object of class %s was provided."
                                 , paste(class(C0), collapse = "")) 
