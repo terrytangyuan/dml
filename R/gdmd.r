@@ -84,6 +84,35 @@
 GdmDiag <- function(data, simi, dism, C0 = 1, threshold = 0.001) {
 		fudge = 0.000001
 		reduction = 2
+
+		# Input class checks
+        data <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = data)
+        simi <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = simi)
+        dism <- .checkMatrixInput(functionName = "GdmFull", argName = "data", inputObject = dism)
+        if (!(is.numeric(C0) && length(C0) == 1)) {
+            errorTxt <- sprintf("C0 of GdmDiag expects a number. An object of class %s was provided."
+                                , paste(class(C0), collapse = "")) 
+            stop(errorTxt)
+        }
+        if (!(is.numeric(threshold) && length(threshold) == 1)) {
+            errorTxt <- sprintf("threshold of GdmDiag expects a number. An object of class %s was provided."
+                                , paste(class(threshold), collapse = "")) 
+            stop(errorTxt)
+        }
+        
+        # Input dimension checks
+        if (!dim(simi)[2] == 2) {
+            errorTxt <- sprintf("The object passed to simi should be an n x 2 matrix. You provided an object with dimensions %s"
+                                , paste(dim(simi), collapse = " x "))
+            stop(errorTxt)
+        }
+        
+        if (!dim(dism)[2] == 2) {
+            errorTxt <- sprintf("The object passed to dism should be an n x 2 matrix. You provided an object with dimensions %s"
+                                , paste(dim(dism), collapse = " x "))
+            stop(errorTxt)
+        }
+
 		data <- as.matrix(data)
 		simi <- as.matrix(simi)
 		dism <- as.matrix(dism)
