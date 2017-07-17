@@ -15,8 +15,8 @@ Imports:
 Suggests:
     lintr,
     testthat
-Author: Yuan Tang <terrytangyuan@gmail.com>, Gao Tao <joegaotao@gmail.com>, Xiao
-    Nan <road2stat@gmail.com>
+Author: Yuan Tang <terrytangyuan@gmail.com>, Tao Gao <joegaotao@gmail.com>,
+    Nan Xiao <me@nanx.me>
 Maintainer: Yuan Tang <terrytangyuan@gmail.com>
 License: MIT + file LICENSE
 URL: https://github.com/terrytangyuan/dml
