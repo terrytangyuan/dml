@@ -102,9 +102,6 @@ plot(dcaData[, 1], dcaData[, 2], bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k
 }
 
 }
-\author{
-Xiao Nan <\url{http://www.road2stat.com}>
-}
 \references{
 Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2006).
 Learning Distance Metrics with Contextual Constraints for Image Retrieval.
