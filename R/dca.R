@@ -42,8 +42,6 @@
 #'
 #' @note Put some note here.
 #'
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
-#'
 #' @export dca
 #' @importFrom lfda %^%
 #' @import MASS
