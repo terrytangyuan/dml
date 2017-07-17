@@ -115,7 +115,7 @@ rca(x[ , 1:2], chunks)$B
 
 }
 \author{
-Xiao Nan <\url{http://www.road2stat.com}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
