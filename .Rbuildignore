@@ -4,3 +4,6 @@
 ^cran-comments\.md$
 ^CONDUCT\.md$
 ^NEWS\.md$
+CONTRIBUTING.md
+ISSUE_TEMPLATE.md
+paper/
