@@ -24,11 +24,11 @@ tags:
 - dimensionality reduction
 affiliations:
 - index: 1
-  name: Ant Financial Services Group, San Mateo, CA 94402, USA.
+  name: Ant Financial Services Group, San Mateo, CA 94402, USA
 - index: 2
-  name: Minghong Investment Management, Shanghai 200122, China.
+  name: Minghong Investment Management, Shanghai 200122, China
 - index: 3
-  name: Seven Bridges Genomics, Inc., Cambridge, MA 02142, USA.
+  name: Seven Bridges Genomics, Inc., Cambridge, MA 02142, USA
 ---
 
 # Summary
