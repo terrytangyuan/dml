@@ -114,9 +114,6 @@ rca(x[ , 1:2], chunks)$B
 }
 
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
 Learning Distance Functions using Equivalence Relations.
@@ -126,8 +123,10 @@ Machine Learning (ICML2003)}.
 \seealso{
 See \code{\link{dca}} for exploiting negative constrains.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{mahalanobis}
 \keyword{metric}
 \keyword{rca}
 \keyword{transformation}
-

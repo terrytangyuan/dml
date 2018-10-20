@@ -15,4 +15,3 @@ whitening transformation matrix, and transformed data}
 \description{
 Print an rca object
 }
-

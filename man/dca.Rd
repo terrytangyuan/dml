@@ -114,4 +114,3 @@ Learning Distance Metrics with Contextual Constraints for Image Retrieval.
 \keyword{mahalanobis}
 \keyword{metric}
 \keyword{transformation}
-
