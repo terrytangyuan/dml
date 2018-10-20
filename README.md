@@ -27,11 +27,15 @@ devtools::install_github("terrytangyuan/dml")
 ### Relevant Component Analysis
 
 ```r
-library("MASS") # generate synthetic multivariate normal data
+library("MASS")
+
+# generate synthetic multivariate normal data
 set.seed(42)
+
 k <- 100L # sample size of each class
 n <- 3L # specify how many classes
 N <- k * n # total sample size
+
 x1 <- mvrnorm(k, mu = c(-16, 8), matrix(c(15, 1, 2, 10), ncol = 2))
 x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(15, 1, 2, 10), ncol = 2))
 x3 <- mvrnorm(k, mu = c(16, -8), matrix(c(15, 1, 2, 10), ncol = 2))
@@ -95,6 +99,7 @@ plot(xnew[, 1L], xnew[, 2L],
 abline(a = -15, b = 0, lty = 2)
 abline(a = 16, b = 0, lty = 2)
 ```
+
 <img src="docs/imgs/rca-example-part2.png"/>
 
 ### Other Examples
