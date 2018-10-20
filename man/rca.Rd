@@ -4,7 +4,7 @@
 \alias{rca}
 \title{Relevant Component Analysis}
 \usage{
-rca(x, chunks)
+rca(x, chunks, useD = NULL)
 }
 \arguments{
 \item{x}{matrix or data frame of original data.
@@ -14,6 +14,11 @@ Each row is a feature vector of a data instance.}
 Each vector represents a chunklet, the elements
 in the vectors indicate where the samples locate
 in \code{x}. See examples for more information.}
+
+\item{useD}{optional. When not given, RCA is done in the
+original dimension and \code{B} is full rank. When \code{useD} is given,
+RCA is preceded by constraints based LDA which reduces
+the dimension to \code{useD}. \code{B} in this case is of rank \code{useD}.}
 }
 \value{
 list of the RCA results:
@@ -59,71 +64,64 @@ Note that any different sets of instances (chunklets),
 }
 \examples{
 \dontrun{
-# generate synthetic Gaussian data
-library("MASS")
+library("MASS") # generate synthetic multivariate normal data
+set.seed(42)
+k <- 100L # sample size of each class
+n <- 3L # specify how many classes
+N <- k * n # total sample size
+x1 <- mvrnorm(k, mu = c(-16, 8), matrix(c(15, 1, 2, 10), ncol = 2))
+x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(15, 1, 2, 10), ncol = 2))
+x3 <- mvrnorm(k, mu = c(16, -8), matrix(c(15, 1, 2, 10), ncol = 2))
+x <- as.data.frame(rbind(x1, x2, x3)) # predictors
+y <- gl(n, k) # response
 
-k <- 100 # sample size of each class
-n <- 3 # number of classes
-N <- k * n # total number of samples
-
-set.seed(1234)
-x1 <- mvrnorm(k, mu = c(-10, 6), matrix(c(10, 4, 4, 10), ncol = 2))
-x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(10, 4, 4, 10), ncol = 2))
-x3 <- mvrnorm(k, mu = c(10, -6), matrix(c(10, 4, 4, 10), ncol = 2))
-x <- as.data.frame(rbind(x1, x2, x3))
-x$V3 <- gl(n, k)
-
-# The fully labeled data set with 3 classes
-plot(x$V1, x$V2,
-  bg = c("#E41A1C", "#377EB8", "#4DAF4A")[x$V3],
-  pch = c(rep(22, k), rep(21, k), rep(25, k))
+# fully labeled data set with 3 classes
+# need to use a line in 2D to classify
+plot(x[, 1L], x[, 2L],
+  bg = c("#E41A1C", "#377EB8", "#4DAF4A")[y],
+  pch = rep(c(22, 21, 25), each = k)
 )
-Sys.sleep(3)
+abline(a = -10, b = 1, lty = 2)
+abline(a = 12, b = 1, lty = 2)
 
-# The same data unlabeled; clearly the class structure is less evident
-plot(x$V1, x$V2)
-Sys.sleep(3)
+# generate synthetic chunklets
+chunks <- vector("list", 300)
+for (i in 1:100) chunks[[i]] <- sample(1L:100L, 10L)
+for (i in 101:200) chunks[[i]] <- sample(101L:200L, 10L)
+for (i in 201:300) chunks[[i]] <- sample(201L:300L, 10L)
 
-chunk1 <- sample(1:100, 5)
-chunk2 <- sample(setdiff(1:100, chunk1), 5)
-chunk3 <- sample(101:200, 5)
-chunk4 <- sample(setdiff(101:200, chunk3), 5)
-chunk5 <- sample(201:300, 5)
-chks <- x[c(chunk1, chunk2, chunk3, chunk4, chunk5), ]
-chunks <- list(chunk1, chunk2, chunk3, chunk4, chunk5)
+chks <- x[unlist(chunks), ]
 
-# The chunklets provided to the RCA algorithm
-plot(chks$V1, chks$V2,
-  col = rep(c(
-    "#E41A1C", "#377EB8",
-    "#4DAF4A", "#984EA3", "#FF7F00"
-  ), each = 5),
-  pch = rep(0:4, each = 5), ylim = c(-15, 15)
-)
-Sys.sleep(3)
+# make "chunklet" vector to feed the chunks argument
+chunksvec <- rep(-1L, nrow(x))
+for (i in 1L:length(chunks)) {
+  for (j in 1L:length(chunks[[i]])) {
+    chunksvec[chunks[[i]][j]] <- i
+  }
+}
 
-# Whitening transformation applied to the  chunklets
-chkTransformed <- as.matrix(chks[, 1:2]) \%*\% rca(x[, 1:2], chunks)$A
+# relevant component analysis
+rcs <- rca(x, chunksvec)
 
-plot(chkTransformed[, 1], chkTransformed[, 2],
-  col = rep(c(
-    "#E41A1C", "#377EB8", "#4DAF4A", "#984EA3", "#FF7F00"
-  ), each = 5),
-  pch = rep(0:4, each = 5), ylim = c(-15, 15)
-)
-Sys.sleep(3)
+# learned transformation of the data
+rcs$A
 
-# The origin data after applying the RCA transformation
-plot(rca(x[, 1:2], chunks)$newX[, 1], rca(x[, 1:2], chunks)$newX[, 2],
+# learned Mahalanobis distance metric
+rcs$B
+
+# whitening transformation applied to the chunklets
+chkTransformed <- as.matrix(chks) \%*\% rcs$A
+
+# original data after applying RCA transformation
+# easier to classify - using only horizontal lines
+xnew <- rcs$newX
+plot(xnew[, 1L], xnew[, 2L],
   bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
   pch = c(rep(22, k), rep(21, k), rep(25, k))
 )
-
-# The RCA suggested transformation of the data, dimensionality reduced
-rca(x[, 1:2], chunks)$A
-
-# The RCA suggested Mahalanobis matrix
-rca(x[, 1:2], chunks)$B}
+abline(a = -15, b = 0, lty = 2)
+abline(a = 16, b = 0, lty = 2)
+}
 }
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
