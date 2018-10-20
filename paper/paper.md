@@ -8,6 +8,7 @@ authors:
   name: Tao Gao
 - affiliation: 3
   name: Nan Xiao
+  orcid: 0000-0002-0250-5673
 date: "19 October 2018"
 output:
   pdf_document: default
@@ -27,7 +28,7 @@ affiliations:
 - index: 2
   name: Alibaba Group
 - index: 3
-  name: Seven Bridges
+  name: Seven Bridges Genomics, Inc., Cambridge, MA 02142, USA.
 ---
 
 # Summary
