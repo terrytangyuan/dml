@@ -52,11 +52,9 @@ Algorithms planned in the first development stage:
 
 The algorithms and routines might be adjusted during developing.
 
-## Links
+## Contribute & Code of Conduct
 
-Track Devel: https://github.com/terrytangyuan/dml
-
-Report Bugs: https://github.com/terrytangyuan/dml/issues
+To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ## Contact
 
