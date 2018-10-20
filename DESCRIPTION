@@ -18,11 +18,11 @@ Description: State-of-the-art algorithms for distance metric learning,
 License: MIT + file LICENSE
 URL: https://github.com/terrytangyuan/dml
 Encoding: UTF-8
-Depends:
-    MASS
 Imports:
     lfda
 Suggests:
+    MASS,
+    scatterplot3d,
     lintr,
     testthat
 BugReports: https://github.com/terrytangyuan/dml/issues
