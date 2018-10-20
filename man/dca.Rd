@@ -54,53 +54,64 @@ Put some note here.
 }
 \examples{
 \dontrun{
+# generate synthetic Gaussian data
+library("MASS")
+
+k <- 100 # sample size of each class
+n <- 3 # specify how many class
+N <- k * n # total sample number
+
 set.seed(123)
-library("MASS")  # generate synthetic Gaussian data
-k = 100          # sample size of each class
-n = 3            # specify how many class
-N = k * n        # total sample number
-x1 = mvrnorm(k, mu = c(-10, 6), matrix(c(10, 4, 4, 10), ncol = 2))
-x2 = mvrnorm(k, mu = c(0, 0), matrix(c(10, 4, 4, 10), ncol = 2))
-x3 = mvrnorm(k, mu = c(10, -6), matrix(c(10, 4, 4, 10), ncol = 2))
-data = as.data.frame(rbind(x1, x2, x3))
+x1 <- mvrnorm(k, mu = c(-10, 6), matrix(c(10, 4, 4, 10), ncol = 2))
+x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(10, 4, 4, 10), ncol = 2))
+x3 <- mvrnorm(k, mu = c(10, -6), matrix(c(10, 4, 4, 10), ncol = 2))
+data <- as.data.frame(rbind(x1, x2, x3))
+
 # The fully labeled data set with 3 classes
-plot(data$V1, data$V2, bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
-     pch = c(rep(22, k), rep(21, k), rep(25, k)))
-Sys.sleep(3)
-# Same data unlabeled; clearly the classes' structure is less evident
-plot(x$V1, x$V2)
+plot(data$V1, data$V2,
+     bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
+     pch = c(rep(22, k), rep(21, k), rep(25, k))
+)
 Sys.sleep(3)
 
-chunk1 = sample(1:100, 5)
-chunk2 = sample(setdiff(1:100, chunk1), 5)
-chunk3 = sample(101:200, 5)
-chunk4 = sample(setdiff(101:200, chunk3), 5)
-chunk5 = sample(201:300, 5)
-chks = list(chunk1, chunk2, chunk3, chunk4, chunk5)
-chunks = rep(-1, 300)
+# The same data unlabeled; clearly the class structure is less evident
+plot(data$V1, data$V2)
+Sys.sleep(3)
+
+chunk1 <- sample(1:100, 5)
+chunk2 <- sample(setdiff(1:100, chunk1), 5)
+chunk3 <- sample(101:200, 5)
+chunk4 <- sample(setdiff(101:200, chunk3), 5)
+chunk5 <- sample(201:300, 5)
+chks <- list(chunk1, chunk2, chunk3, chunk4, chunk5)
+chunks <- rep(-1, 300)
+
 # positive samples in the chunks
 for (i in 1:5) {
   for (j in chks[[i]]) {
-    chunks[j] = i
+    chunks[j] <- i
   }
 }
 
 # define the negative constrains between chunks
-neglinks = matrix(c(
-		0, 0, 1, 1, 1,
-		0, 0, 1, 1, 1,
-		1, 1, 0, 0, 0,
-		1, 1, 0, 0, 1,
-		1, 1, 1, 1, 0),
-		ncol = 5, byrow = TRUE)
+neglinks <- matrix(c(
+  0, 0, 1, 1, 1,
+  0, 0, 1, 1, 1,
+  1, 1, 0, 0, 0,
+  1, 1, 0, 0, 1,
+  1, 1, 1, 1, 0
+),
+ncol = 5, byrow = TRUE
+)
 
-dcaData = dca(data = data, chunks = chunks, neglinks = neglinks)$newData
+dcaData <- dca(data = data, chunks = chunks, neglinks = neglinks)$newData
+
 # plot DCA transformed data
-plot(dcaData[, 1], dcaData[, 2], bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
+plot(dcaData[, 1], dcaData[, 2],
+     bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
      pch = c(rep(22, k), rep(21, k), rep(25, k)),
-     xlim = c(-15, 15), ylim = c(-15, 15))
-}
-
+     xlim = c(-15, 15), ylim = c(-15, 15)
+)}
 }
 \references{
 Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2006).
