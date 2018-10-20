@@ -6,7 +6,7 @@
 
 # dml (Distance Metric Learning in R)
 
-R package for state-of-the-art algorithms for *Distance Metric Learning*, including global and local methods such as *Relevant Component Analysis*, *Discriminative Component Analysis*, *Local Fisher Discriminant Analysis*, etc. These distance metric learning methods are widely applied in feature extraction, dimensionality reduction, clustering, classification, information retrieval, and computer vision problems.
+R package for a collection of *Distance Metric Learning* algorithms, including global and local methods such as *Relevant Component Analysis*, *Discriminative Component Analysis*, *Local Fisher Discriminant Analysis*, etc. These distance metric learning methods are widely applied in feature extraction, dimensionality reduction, clustering, classification, information retrieval, and computer vision problems.
 
 ## Installation
 
@@ -103,7 +103,7 @@ For examples of Local Fisher Discriminant Analysis, please take a look at the se
 
 ## Brief Introduction
 
-Distance metric is widely used in the machine learning literature. We used to choose a distance metric according to a priori (Euclidean Distance , L1 Distance, etc.) or according to the result of cross validation within small class of functions (e.g. choosing order of polynomial for a kernel). Actually, with priori knowledge of the data, we could learn a more suitable distance metric with (semi-)supervised distance metric learning techniques. dml is such an R package aims to implement the state-of-the-art algorithms for (semi-)supervised distance metric learning. These distance metric learning methods are widely applied in feature extraction, dimensionality reduction, clustering, classification, information retrieval, and computer vision problems.
+Distance metric is widely used in the machine learning literature. We used to choose a distance metric according to a priori (Euclidean Distance , L1 Distance, etc.) or according to the result of cross validation within small class of functions (e.g. choosing order of polynomial for a kernel). Actually, with priori knowledge of the data, we could learn a more suitable distance metric with (semi-)supervised distance metric learning techniques. dml is such an R package aims to implement a collection of algorithms for (semi-)supervised distance metric learning. These distance metric learning methods are widely applied in feature extraction, dimensionality reduction, clustering, classification, information retrieval, and computer vision problems.
 
 ## Algorithms
 
