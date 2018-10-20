@@ -2,8 +2,6 @@
 #'
 #' Performs discriminative component analysis on the given data.
 #'
-#' Put DCA function details here.
-#'
 #' @param data \code{n * d} data matrix. \code{n} is the number of data points,
 #'             \code{d} is the dimension of the data.
 #'             Each data point is a row in the matrix.
@@ -39,8 +37,6 @@
 #' @keywords dca discriminant component transformation mahalanobis metric
 #'
 #' @aliases dca
-#'
-#' @note Put some note here.
 #'
 #' @export dca
 #' @importFrom lfda %^%

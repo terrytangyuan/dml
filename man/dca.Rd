@@ -46,12 +46,6 @@ For every two original data points (x1, x2) in newData (y1, y2):
 \description{
 Performs discriminative component analysis on the given data.
 }
-\details{
-Put DCA function details here.
-}
-\note{
-Put some note here.
-}
 \examples{
 \dontrun{
 # generate synthetic Gaussian data

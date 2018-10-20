@@ -2,8 +2,6 @@
 #'
 #' Performs Global Distance Metric Learning (GDM) on the given data, learning a full matrix.
 #'
-#' Put GdmFull function details here.
-#'
 #' @param data \code{n * d} data matrix. \code{n} is the number of data points,
 #'             \code{d} is the dimension of the data.
 #'             Each data point is a row in the matrix.
