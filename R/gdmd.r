@@ -32,19 +32,18 @@
 #' @author Tao Gao <\url{http://www.gaotao.name}>
 #'
 #' @export GdmDiag
-#' @import MASS
 #'
 #' @references
 #' Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2003).
 #' Distance metric learning, with application to clustering with side-information.
 #  in \emph{Proc. NIPS}.
 #'
-
 #' @examples
 #' \dontrun{
+#' library("MASS")
+#' library("scatterplot3d")
+#'
 #' set.seed(602)
-#' library(MASS)
-#' library(scatterplot3d)
 #'
 #' # generate simulated Gaussian data
 #' k = 100

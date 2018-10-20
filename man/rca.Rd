@@ -60,10 +60,10 @@ Note that any different sets of instances (chunklets),
 \examples{
 \dontrun{
 set.seed(1234)
-require(MASS)  # generate synthetic Gaussian data
-k = 100        # sample size of each class
-n = 3          # specify how many class
-N = k * n      # total sample number
+library("MASS")  # generate synthetic Gaussian data
+k = 100          # sample size of each class
+n = 3            # specify how many class
+N = k * n        # total sample number
 x1 = mvrnorm(k, mu = c(-10, 6), matrix(c(10, 4, 4, 10), ncol = 2))
 x2 = mvrnorm(k, mu = c(0, 0), matrix(c(10, 4, 4, 10), ncol = 2))
 x3 = mvrnorm(k, mu = c(10, -6), matrix(c(10, 4, 4, 10), ncol = 2))
@@ -112,7 +112,6 @@ rca(x[ , 1:2], chunks)$A
 # The RCA suggested Mahalanobis matrix
 rca(x[ , 1:2], chunks)$B
 }
-
 }
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).

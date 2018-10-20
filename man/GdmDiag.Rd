@@ -44,9 +44,10 @@ Be sure to check whether the dimension of original data and constrains' format a
 }
 \examples{
 \dontrun{
+library("MASS")
+library("scatterplot3d")
+
 set.seed(602)
-library(MASS)
-library(scatterplot3d)
 
 # generate simulated Gaussian data
 k = 100

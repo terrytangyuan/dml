@@ -1,6 +1,7 @@
 context("test algorithms")
-library(lfda)
-library(MASS)
+
+library("lfda")
+library("MASS")
 
 test_that("dca works", {
   k <- 100 # sample size of each class

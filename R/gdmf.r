@@ -26,8 +26,6 @@
 #'
 #' @keywords GDM global distance metirc learning transformation mahalanobis metric
 #'
-#' @import MASS
-#'
 #' @export GdmFull
 #'
 #' @note Be sure to check whether the dimension of original data and constrains' format are valid for the function.
@@ -42,8 +40,8 @@
 #' @examples
 #' \dontrun{
 #' set.seed(123)
-#' library(MASS)
-#' library(scatterplot3d)
+#' library("MASS")
+#' library("scatterplot3d")
 #'
 #' # generate simulated Gaussian data
 #' k = 100
