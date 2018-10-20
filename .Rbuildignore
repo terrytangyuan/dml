@@ -1,9 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
-^cran-comments\.md$
-^CONDUCT\.md$
 ^NEWS\.md$
-CONTRIBUTING.md
-ISSUE_TEMPLATE.md
+^cran-comments\.md$
+^CONTRIBUTING\.md$
+^CODE_OF_CONDUCT\.md$
+^ISSUE_TEMPLATE\.md$
 paper/
