@@ -24,11 +24,11 @@ tags:
 - dimensionality reduction
 affiliations:
 - index: 1
-  name: Ant Financial
+  name: Ant Financial Services Group
 - index: 2
-  name: Alibaba Group
+  name: Alibaba Group Holding Limited
 - index: 3
-  name: Seven Bridges Genomics, Inc., Cambridge, MA 02142, USA.
+  name: Seven Bridges Genomics, Inc.
 ---
 
 # Summary
