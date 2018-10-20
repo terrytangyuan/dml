@@ -34,12 +34,14 @@ test_that("dca works", {
     0, 0, 1, 1, 1,
     1, 1, 0, 0, 0,
     1, 1, 0, 0, 1,
-    1, 1, 1, 1, 0
-  ),
-  ncol = 5, byrow = TRUE
+    1, 1, 1, 1, 0),
+    ncol = 5, byrow = TRUE
   )
 
-  dca(data = data, chunks = chunks, neglinks = neglinks)
+  result <- dca(data = data, chunks = chunks, neglinks = neglinks)
+  expect_equal(dim(result$B), c(2, 2))
+  expect_equal(dim(result$DCA), c(2, 2))
+  expect_equal(dim(result$newData), c(300, 2))
 })
 
 test_that("dca works with useD", {
@@ -80,7 +82,10 @@ test_that("dca works with useD", {
 
   useD <- 1
 
-  expect_that(dca(data = data, chunks = chunks, neglinks = neglinks, useD = useD), not(throws_error()))
+  result <- dca(data = data, chunks = chunks, neglinks = neglinks, useD = useD)
+  expect_equal(dim(result$B), c(2, 2))
+  expect_equal(dim(result$DCA), c(1, 2))
+  expect_equal(dim(result$newData), c(300, 1))
 })
 
 # generate necessary data set for gdmd and gdmf
@@ -183,5 +188,17 @@ test_that("rca works", {
   chks <- x[c(chunk1, chunk2, chunk3, chunk4, chunk5), ]
   chunks <- list(chunk1, chunk2, chunk3, chunk4, chunk5)
 
-  rca(x[, 1:2], chunks)
+  chks <- x[unlist(chunks), ]
+  
+  # make "chunklet" vector to feed the chunks argument
+  chunksvec <- rep(-1L, nrow(x))
+  for (i in 1L:length(chunks)) {
+    for (j in 1L:length(chunks[[i]])) {
+      chunksvec[chunks[[i]][j]] <- i
+    }
+  }
+  result <- rca(x[, 1:2], chunksvec)
+  expect_equal(dim(result$A), c(2, 2))
+  expect_equal(dim(result$B), c(2, 2))
+  expect_equal(dim(result$newX), c(300, 2))
 })
