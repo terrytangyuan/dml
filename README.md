@@ -1,6 +1,6 @@
 [![Travis-CI Build Status](https://travis-ci.org/terrytangyuan/dml.svg?branch=master)](https://travis-ci.org/terrytangyuan/dml)
 [![Coverage Status](https://coveralls.io/repos/terrytangyuan/dml/badge.svg?branch=master)](https://coveralls.io/r/terrytangyuan/dml?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/dml)](http://cran.r-project.org/web/packages/dml)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/dml)](https://cran.r-project.org/package=dml)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](http://badges.mit-license.org)
 
 # dml (Distance Metric Learning in R)
