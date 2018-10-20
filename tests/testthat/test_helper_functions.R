@@ -1,5 +1,5 @@
-context('helper functions')
+context("helper functions")
 
-test_that('package set up successfully', {
-  sum(1,2)
+test_that("package set up successfully", {
+  sum(1, 2)
 })

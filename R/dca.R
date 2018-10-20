@@ -106,115 +106,114 @@
 #' }
 #'
 dca <- function(data, chunks, neglinks, useD = NULL) {
+  data <- t(as.matrix(data))
+  chunks <- as.matrix(chunks)
+  neglinks <- as.matrix(neglinks)
 
-	data     = t(as.matrix(data))
-	chunks   = as.matrix(chunks)
-	neglinks = as.matrix(neglinks)
+  d <- nrow(data)
+  n <- ncol(data)
 
-	d = nrow(data)
-	n = ncol(data)
+  if (is.null(useD)) useD <- d
 
-	if(is.null(useD)) useD = d
+  # 1. Compute means of chunks
+  s <- max(chunks)
+  M <- matrix(NA, ncol = s, nrow = d)
 
-	# 1. Compute means of chunks
-	s = max(chunks)
-	M = matrix(NA, ncol = s, nrow = d)
+  for (i in 1:s) {
+    inds <- which(chunks == i)
+    M[, i] <- as.matrix(rowMeans(data[, inds]))
+  }
 
-	for (i in 1:s) {
-		inds = which(chunks == i)
-		M[ , i] = as.matrix(rowMeans(data[ , inds]))
-	}
+  # 2. Compute Cb
+  Cb <- mat.or.vec(d, d)
+  N_d <- 0
+  for (j in 1:s) {
+    inds <- which(neglinks[j, ] == 1)
+    for (i in 1:length(inds)) {
+      Cb <- Cb + ((M[, j] - M[, inds[i]]) %*% t(M[, j] - M[, inds[i]]))
+    }
+    N_d <- N_d + length(inds)
+  }
 
-	# 2. Compute Cb
-	Cb = mat.or.vec(d, d)
-	N_d = 0
-	for (j in 1:s) {
-		inds = which(neglinks[j, ] == 1)
-		for (i in 1:length(inds)) {
-			Cb = Cb + ((M[ , j] - M[ , inds[i]]) %*% t(M[ , j] - M[ , inds[i]]))
-		}
-		N_d = N_d + length(inds)
-	}
+  if (N_d == 0) {
+    Cb <- diag(d)
+  } else {
+    Cb <- Cb / N_d
+  }
 
-	if (N_d == 0) {
-		Cb = diag(d)
-	} else {
-		Cb = Cb/N_d
-	}
+  # 3. Compute Cw
 
-	# 3. Compute Cw
+  Cw <- mat.or.vec(d, d)
+  N_w <- 0
 
-	Cw = mat.or.vec(d, d)
-	N_w = 0
+  for (j in 1:s) {
+    inds <- which(chunks == j)
+    for (i in 1:length(inds)) {
+      Cw <- Cw + ((data[, inds[i]] - M[, j]) %*% t(data[, inds[i]] - M[, j]))
+    }
+    N_w <- N_w + length(inds)
+  }
 
-	for (j in 1:s) {
-		inds = which(chunks == j)
-		for (i in 1:length(inds)) {
-			Cw = Cw + ((data[ , inds[i]] - M[ , j]) %*% t(data[ , inds[i]] - M[ , j]))
-		}
-		N_w = N_w + length(inds)
-	}
+  Cw <- Cw / N_w
 
-	Cw = Cw/N_w
+  # 3. Diagonalize Cb
 
-	# 3. Diagonalize Cb
+  eigTmp <- eigen(Cb)
+  eigVec <- eigTmp$vectors
+  eigVal <- as.matrix(eigTmp$values)
+  index <- which(abs(eigVal) > 1e-9) # find Non-Zero EigVals
 
-	eigTmp = eigen(Cb)
-	eigVec = eigTmp$vectors
-	eigVal = as.matrix(eigTmp$values)
-	index = which(abs(eigVal) > 1e-9)  # find Non-Zero EigVals
+  if (useD < d) {
+    R <- eigVec[, index[1:useD]] # R have already sorted eigenvalues
+  } else {
+    R <- eigVec[, index] # Each col of D is an eigenvector
+  }
 
-	if (useD < d) {
-	R = eigVec[ , index[1:useD]]  # R have already sorted eigenvalues
-	} else {
-	R = eigVec[ , index]  # Each col of D is an eigenvector
-	}
+  Db <- t(R) %*% Cb %*% as.matrix(R)
+  Z <- as.matrix(R) %*% ((Db) %^% (-0.5))
 
-	Db = t(R) %*% Cb %*% as.matrix(R)
-	Z = as.matrix(R) %*% ((Db) %^% (-0.5))
+  # Diagonalize t(Z) %*% Cw %*% Z
+  Cz <- t(Z) %*% Cw %*% as.matrix(Z)
+  eigVal <- eigen(Cz)$values
+  if (length(eigVal) == 1) {
+    Dw <- as.matrix(eigVal)
+  } else {
+    Dw <- diag(eigen(Cz)$values)
+  }
+  eigVec <- eigen(Cz)$vectors
 
-	# Diagonalize t(Z) %*% Cw %*% Z
-	Cz = t(Z) %*% Cw %*% as.matrix(Z)
-	eigVal = eigen(Cz)$values
-	if (length(eigVal) == 1) {
-		Dw = as.matrix(eigVal)
-	} else {
-		Dw = diag(eigen(Cz)$values)
-	}
-	eigVec = eigen(Cz)$vectors
-
-	DCA = (Dw %^% (-0.5)) %*% t(eigVec) %*% t(Z)
-	B = t(DCA) %*% as.matrix(DCA)
-	newData = t(DCA %*% data)
+  DCA <- (Dw %^% (-0.5)) %*% t(eigVec) %*% t(Z)
+  B <- t(DCA) %*% as.matrix(DCA)
+  newData <- t(DCA %*% data)
   out <- list("B" = B, "DCA" = DCA, "newData" = newData)
-  class(out) <- 'dca'
-	return(out)
+  class(out) <- "dca"
+  return(out)
 }
 
 
 #' Print an dca object
 #'
 #' Print an dca object
-#' 
+#'
 #' @param x The result from the dca function.
-#' 
+#'
 #' @param ... ignored
 #' @export
 #' @importFrom utils head
 #' @method print dca
-print.dca <- function(x, ...){
+print.dca <- function(x, ...) {
   cat("Results for Discriminative Component Analysis \n\n")
   cat("The DCA suggested Mahalanobis matrix is: \n")
   print(head(x$B))
-  
+
   cat("\n")
   cat("The DCA suggested transformation of the data is: \n")
   print(head(x$DCA))
-  
+
   cat("\n")
   cat("The DCA transformed data is: \n")
   print(head(x$newData))
-  
+
   cat("\n")
   cat("Only partial output is shown above. Please see the model output for more details. \n")
   invisible(x)

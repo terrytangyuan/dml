@@ -121,41 +121,40 @@
 #' }
 #'
 rca <- function(x, chunks) {
+  chunkNum <- length(chunks)
+  chunkDf <- vector("list", chunkNum)
+  p <- length(unlist(chunks))
 
-	chunkNum = length(chunks)
-	chunkDf = vector("list", chunkNum)
-	p = length(unlist(chunks))
+  for (i in 1:chunkNum) {
+    chunkDf[[i]] <- as.matrix(x[chunks[[i]], ])
+  }
 
-	for (i in 1:chunkNum) {
-		chunkDf[[i]] = as.matrix(x[chunks[[i]], ])
-	}
+  chunkMean <- lapply(chunkDf, colMeans)
 
-	chunkMean = lapply(chunkDf, colMeans)
+  for (i in 1:chunkNum) {
+    chunkDf[[i]] <- chunkDf[[i]] - chunkMean[[i]]
+  }
 
-	for (i in 1:chunkNum) {
-		chunkDf[[i]] = chunkDf[[i]] - chunkMean[[i]]
-	}
+  cData <- do.call(rbind, chunkDf) # calc inner covariance matrix and normalize
+  innerCov <- cov(cData) * ((nrow(cData) - 1) / nrow(cData))
 
-	cData = do.call(rbind, chunkDf)  # calc inner covariance matrix and normalize
-	innerCov = cov(cData) * ((nrow(cData) - 1) / nrow(cData))
+  for (i in 1:chunkNum) {
+    chunkDf[[i]] <- t(chunkDf[[i]]) %*% chunkDf[[i]]
+  }
 
-	for (i in 1:chunkNum) {
-		chunkDf[[i]] = t(chunkDf[[i]]) %*% chunkDf[[i]]
-	}
+  hatC <- Reduce("+", chunkDf) / p # Reduce() do the sum of matrices in a list
 
-	hatC = Reduce("+", chunkDf)/p    # Reduce() do the sum of matrices in a list
+  B <- solve(hatC) # raw mahalanobis metric
 
-	B = solve(hatC)                  # raw mahalanobis metric
+  A <- diag(ncol(x))
+  A <- A %*% (innerCov %^% (-0.5)) # whitening transformation matrix
 
-	A = diag(ncol(x))
-	A = A %*% (innerCov %^% (-0.5))  # whitening transformation matrix
+  newX <- as.matrix(x) %*% A # original data transformed
 
-	newX = as.matrix(x) %*% A        # original data transformed
+  out <- list("B" = B, "A" = A, "newX" = newX)
 
-	out <- list("B" = B, "A" = A, "newX" = newX)
-	
-	class(out) <- 'rca'
-	return(out)
+  class(out) <- "rca"
+  return(out)
 }
 #' Print an rca object
 #'
@@ -166,17 +165,17 @@ rca <- function(x, chunks) {
 #' @export
 #' @importFrom utils head
 #' @method print rca
-print.rca <- function(x, ...){
+print.rca <- function(x, ...) {
   cat("Results for Relevant Component Analysis \n\n")
   cat("The Mahalanobis metric is: \n")
   print(head(x$B))
-  
+
   cat("\n\n The whitening transformation matrix is:  \n")
   print(head(x$A))
-  
+
   cat("\n\n The original data transformed is:  \n")
   print(head(x$newX))
-  
+
   cat("\n")
   cat("Only partial output is shown above. Please see the model output for more details. \n")
   invisible(x)
