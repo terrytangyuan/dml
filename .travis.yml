@@ -6,7 +6,7 @@ env:
   global:
     - PKG=DEV
     - PKG=STD
-    - CRAN: http://cran.rstudio.com
+    - CRAN: https://cloud.r-project.org
     - RGL_USE_NULL: true
 
 notifications:
@@ -18,11 +18,9 @@ apt_packages:
   - freeglut3-dev
   - xvfb
   - xserver-xorg-core
-  
-r_github_packages:
-  - hadley/devtools
-  - jimhester/covr
-  - terrytangyuan/lfda
+
+r_packages:
+  - covr
 
 before_install:
   - if [[ "$PKG" == "DEV" ]]; then
@@ -32,10 +30,10 @@ before_install:
   - if [[ "$PKG" == "STD" ]]; then
       echo "Building standard branch...";
     fi
-  - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" >> ~/.Rprofile
+  - echo "options(repos = c(CRAN='https://cloud.r-project.org'))" >> ~/.Rprofile
 
 after_success:
-  - Rscript -e 'library(covr);coveralls()'
+  - Rscript -e 'library("covr");coveralls()'
 
 after_failure:
   - Rscript -e 'devtools::load_all(); devtools::test()'
