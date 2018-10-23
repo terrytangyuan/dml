@@ -4,6 +4,7 @@
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/grand-total/dml)](https://cran.r-project.org/package=dml)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](http://badges.mit-license.org)
 [![DOI](https://zenodo.org/badge/41424588.svg)](https://zenodo.org/badge/latestdoi/41424588)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.01036/status.svg)](https://doi.org/10.21105/joss.01036)
 
 
 # dml (Distance Metric Learning in R)
