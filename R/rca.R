@@ -25,7 +25,7 @@
 #' original dimension and \code{B} is full rank. When \code{useD} is given,
 #' RCA is preceded by constraints based LDA which reduces
 #' the dimension to \code{useD}. \code{B} in this case is of rank \code{useD}.
-#' 
+#'
 #' @return list of the RCA results:
 #' \item{B}{The RCA suggested Mahalanobis matrix.
 #'          Distances between data points x1, x2 should be
@@ -131,20 +131,20 @@
 rca <- function(x, chunks, useD = NULL) {
   n <- nrow(x)
   d <- ncol(x)
-  if(is.null(useD)) useD = d
-  
+  if (is.null(useD)) useD <- d
+
   # subtract the mean
   TM <- colMeans(x)
   x <- x - (matrix(1L, n, 1L) %*% TM)
-  
+
   # compute chunklet means and center data
   S <- max(chunks)
-  
+
   Cdata <- matrix()
   AllInds <- vector()
   M <- matrix(NA, nrow = S, ncol = d)
-  tmp <- vector('list', S)
-  
+  tmp <- vector("list", S)
+
   for (i in 1L:S) {
     inds <- which(chunks == i)
     M[i, ] <- colMeans(x[inds, ])
@@ -152,12 +152,12 @@ rca <- function(x, chunks, useD = NULL) {
     Cdata <- do.call(rbind, tmp)
     AllInds <- c(AllInds, inds)
   }
-  
+
   # Compute inner covariance matrix
   InnerCov <- cov(Cdata) * ((nrow(Cdata) - 1L) / nrow(Cdata))
-  
+
   # Optional cFLD: find optimal projection: min | A S_w A^t | / | A S_t A^t |
-  
+
   if (useD < d) {
     # Compute total covariance using only chunkleted points
     TotalCov <- cov(x[AllInds, ])
@@ -167,29 +167,29 @@ rca <- function(x, chunks, useD = NULL) {
     D <- tmp$values
     V <- tmp$vectors
     # reorder the vectors in descending order
-    V <- V[ , ncol(V):1L]
+    V <- V[, ncol(V):1L]
     # A is the cFLD transformation
     # Acts on row data by multiplication from the right
-    A <- V[ , 1L:useD]
+    A <- V[, 1L:useD]
     InnerCov <- t(A) %*% InnerCov %*% A
   } else {
     A <- diag(d)
   }
-  
+
   # RCA: whiten the data w.r.t the inner covariance matrix
   tmp <- svd(InnerCov)
   U1 <- tmp$u
   S1 <- diag(tmp$d)
   V1 <- tmp$v
-  
+
   # Operate from the right on row vectors
   A <- as.matrix(A %*% (U1 %*% S1^(0.5)))
-  
+
   # The total mean subtracted is re-added before transformation.
   # This operation is not required for distance computations,
   # as it only adds a constant to all points
   newX <- as.matrix(x + matrix(1L, n, 1L) %*% TM) %*% A
-  
+
   B <- A %*% t(A)
 
   out <- list("B" = B, "A" = A, "newX" = newX)

@@ -34,8 +34,9 @@ test_that("dca works", {
     0, 0, 1, 1, 1,
     1, 1, 0, 0, 0,
     1, 1, 0, 0, 1,
-    1, 1, 1, 1, 0),
-    ncol = 5, byrow = TRUE
+    1, 1, 1, 1, 0
+  ),
+  ncol = 5, byrow = TRUE
   )
 
   result <- dca(data = data, chunks = chunks, neglinks = neglinks)
@@ -189,7 +190,7 @@ test_that("rca works", {
   chunks <- list(chunk1, chunk2, chunk3, chunk4, chunk5)
 
   chks <- x[unlist(chunks), ]
-  
+
   # make "chunklet" vector to feed the chunks argument
   chunksvec <- rep(-1L, nrow(x))
   for (i in 1L:length(chunks)) {
