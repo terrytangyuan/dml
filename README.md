@@ -1,7 +1,7 @@
 [![JOSS DOI](https://joss.theoj.org/papers/10.21105/joss.01036/status.svg)](https://doi.org/10.21105/joss.01036)
+[![CRAN Status](https://www.r-pkg.org/badges/version/dml)](https://cran.r-project.org/package=dml)
 [![Travis-CI Build Status](https://travis-ci.org/terrytangyuan/dml.svg?branch=master)](https://travis-ci.org/terrytangyuan/dml)
 [![Coverage Status](https://coveralls.io/repos/terrytangyuan/dml/badge.svg?branch=master)](https://coveralls.io/r/terrytangyuan/dml?branch=master)
-[![CRAN Status](https://www.r-pkg.org/badges/version/dml)](https://cran.r-project.org/package=dml)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/grand-total/dml)](https://cran.r-project.org/package=dml)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://badges.mit-license.org)
 [![Zenodo DOI](https://zenodo.org/badge/41424588.svg)](https://zenodo.org/badge/latestdoi/41424588)
