@@ -87,7 +87,7 @@ Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2003).
 Distance metric learning, with application to clustering with side-information.
 }
 \author{
-Tao Gao <\url{http://www.gaotao.name}>
+Tao Gao <\email{joegaotao@gmail.com}>
 }
 \keyword{GDM}
 \keyword{distance}

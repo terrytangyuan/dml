@@ -28,7 +28,7 @@
 #'
 #' @note Be sure to check whether the dimension of original data and constrains' format are valid for the function.
 #'
-#' @author Tao Gao <\url{http://www.gaotao.name}>
+#' @author Tao Gao <\email{joegaotao@@gmail.com}>
 #'
 #' @references
 #' Steven C.H. Hoi, W. Liu, M.R. Lyu and W.Y. Ma (2003).

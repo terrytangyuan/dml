@@ -27,7 +27,7 @@
 #'
 #' @note Be sure to check whether the dimension of original data and constrains' format are valid for the function.
 #'
-#' @author Tao Gao <\url{http://www.gaotao.name}>
+#' @author Tao Gao <\email{joegaotao@@gmail.com}>
 #'
 #' @export GdmDiag
 #'
