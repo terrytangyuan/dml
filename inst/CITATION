@@ -1,0 +1,14 @@
+citHeader("To cite dml in publications, please use:")
+
+bibentry(bibtype = "Article",
+  author = "Tang, Yuan and Gao, Tao and Xiao, Nan",
+  title = "dml: Distance Metric Learning in R",
+  year = "2018",
+  issue = "30",
+  volume = "3",
+  pages = "1036",
+  url = "http://joss.theoj.org/papers/10.21105/joss.01036",
+  doi = "10.21105/joss.01036",
+  journal = "Journal of Open Source Software",
+  textVersion = "Tang et al., (2018). dml: Distance Metric Learning in R. Journal of Open Source Software, 3(30), 1036. https://doi.org/10.21105/joss.01036"
+)
