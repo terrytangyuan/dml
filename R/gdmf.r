@@ -216,7 +216,7 @@ GdmFull <- function(data, simi, dism, maxiter = 100) {
           A <- A0
         } else {
           x <- x0 + as.numeric(t1 - crossprod(w1, x0)) * w1
-          A <- matrix(x, 3, 3)
+          A <- matrix(x, d, d)
         }
 
         A <- (A + t(A)) / 2
