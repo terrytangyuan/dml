@@ -1,6 +1,7 @@
+**Note**: This package has been maintained by [@terrytangyuan](https://github.com/terrytangyuan) since 2015. Please [consider sponsoring](https://github.com/sponsors/terrytangyuan)!
+
 [![JOSS DOI](https://joss.theoj.org/papers/10.21105/joss.01036/status.svg)](https://doi.org/10.21105/joss.01036)
 [![CRAN Status](https://www.r-pkg.org/badges/version/dml)](https://cran.r-project.org/package=dml)
-[![Travis-CI Build Status](https://travis-ci.org/terrytangyuan/dml.svg?branch=master)](https://travis-ci.org/terrytangyuan/dml)
 [![Coverage Status](https://coveralls.io/repos/terrytangyuan/dml/badge.svg?branch=master)](https://coveralls.io/r/terrytangyuan/dml?branch=master)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/grand-total/dml)](https://cran.r-project.org/package=dml)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://badges.mit-license.org)
